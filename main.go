@@ -45,7 +45,7 @@ func apiRouter(writer http.ResponseWriter, request *http.Request) {
 
 func rntiRouter(writer http.ResponseWriter, request *http.Request) {
 	if rn, boolean := request.URL.Query()["rn"]; boolean {
-		fmt.Println(rn)
+		fmt.Println(rn[0])
 	} else {
 		getInfo(writer, request)
 	}
