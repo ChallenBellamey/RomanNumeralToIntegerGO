@@ -24,7 +24,11 @@ func listen(router *mux.Router) {
 // routes
 
 func routes(router *mux.Router) {
-	router.HandleFunc("/api", getInfo).Methods("GET")
+	apiRouter := router.PathPrefix("/api").Subrouter()
+	apiRouter.HandleFunc("", getInfo).Methods("GET")
+
+	rntiRouter := apiRouter.PathPrefix("/roman-numerals-to-integer").Subrouter()
+	rntiRouter.HandleFunc("", getInfo).Methods("GET")
 }
 
 // api-controller
