@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strings"
 
 	"github.com/gorilla/mux"
 )
@@ -64,6 +65,23 @@ func getInfo(writer http.ResponseWriter, request *http.Request) {
 
 	writer.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(writer).Encode(response)
+}
+
+// util
+
+func romanNumeralsToInteger(RN string) int {
+	romanNumeralValues := map[string](int){
+		"I": 1,
+		"V": 5,
+		"X": 10,
+		"L": 50,
+		"C": 100,
+		"D": 500,
+		"M": 1000,
+	}
+
+	RNArray := strings.Split(strings.ToUpper(RN), "")
+
 }
 
 // errors
